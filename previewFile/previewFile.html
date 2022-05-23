@@ -1,0 +1,63 @@
+<template>
+  <template if:true={file}>
+    <li
+      class="slds-col slds-var-p-vertical_x-small slds-small-size_1-of-2 slds-medium-size_1-of-4 slds-large-size_1-of-6"
+    >
+      <div
+        class="slds-file slds-file_card slds-has-title slds-m-top_large attachment-width"
+      >
+        <figure>
+          <a class="slds-file__crop">
+            <!--<template if:false={isDocTypeUnknown}>
+              <img src={thumbnail} alt={file.title} class="file-image" />
+            </template>
+            <template if:false={isDocTypeUnknown}>
+              <lightning-icon
+                class="slds-file__icon slds-icon_container"
+                icon-name={iconName}
+                alternative-text={iconName}
+                title={iconName}
+                size="large"
+              >
+                <span class="slds-assistive-text">{file.title}</span>
+              </lightning-icon>
+            </template>-->
+            <template if:true={isPreviewable}>
+              <img src={thumbnail} alt={file.title} class="file-image" />
+            </template>
+            <template if:false={isPreviewable}>
+              <lightning-icon
+                class="slds-file__icon slds-icon_container"
+                icon-name={iconName}
+                alternative-text={iconName}
+                title={iconName}
+                size="large"
+              >
+                <span class="slds-assistive-text">{file.title}</span>
+              </lightning-icon>
+            </template>
+          </a>
+          <figcaption class="slds-file__title slds-file__title_card">
+            <div class="slds-media slds-media_small slds-media_center">
+              <lightning-icon
+                icon-name={iconName}
+                alternative-text={file.title}
+                title={file.title}
+                size="xx-small"
+              >
+                <span class="slds-assistive-text">{file.title}</span>
+              </lightning-icon>
+              <div class="slds-media__body slds-var-p-left_xx-small">
+                <span
+                  class="slds-file__text slds-truncate slds-text-color_default"
+                  title={file.title}
+                  >{file.title}</span
+                >
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </li>
+  </template>
+</template>
