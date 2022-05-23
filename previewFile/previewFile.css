@@ -1,0 +1,14 @@
+.file-image {
+  /*width: 318px;
+  height: 171.47px;*/
+}
+
+.slds-image__crop img,
+.slds-file__crop img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+.attachment-width {
+  width: 20rem;
+}
