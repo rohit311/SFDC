@@ -1,0 +1,21 @@
+Creation of org dependant unlocked packages with namespace:
+
+Before starting with below steps , ensure that a namespace org exists & a seperate DevHub org exists.
+Link the namespace org with devhub org by following these steps - 
+https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_before.htm
+
+
+1. Specify the package name & directory which contains the metadata as below
+   sf package create -t Unlocked -r force-app/main/default/MyPackage5 -n MyPackage5 --org-dependent
+2. Create package version with optional installation key
+   sf package version create --package "Expense Manager" --installation-key test1234 --wait 10
+3. Create a scratch org with project definition
+   sf org create scratch --set-default --definition-file config/project-scratch-def.json
+4. Install the package on the scratch org 
+   sf package install --package "MyPackage@0.1.0-1" --target-org MyTestOrg1 --installation-key test1234 --wait 10 --publish-wait 10
+5. Open the scratch org to view the contents
+   sf org open --target-org MyTestOrg1
+
+Considerations:
+1. Code from unlocked, org dependant package cannot call code without namespace.
+2. Code from two different namespaces can interact using the "Global" components.
