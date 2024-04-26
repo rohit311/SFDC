@@ -19,3 +19,6 @@ https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_de
 Considerations:
 1. Code from unlocked, org dependant package cannot call code without namespace.
 2. Code from two different namespaces can interact using the "Global" components.
+
+
+More info - https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_workflow.htm
