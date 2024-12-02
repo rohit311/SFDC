@@ -1,0 +1,9 @@
+# https://tempflip.medium.com/a-complete-salesforce-app-pipeline-1-security-and-the-the-jwt-flow-74592087e93d
+
+--> Steps for generating ssl certificate
+1. openssl genrsa -des3 -passout pass:myPassw0rd -out server3.pass.key 2048
+2. openssl rsa -passin pass:myPassw0rd -in server3.pass.key -out server3.key
+3. rm server3.pass.key
+4. openssl req -new -key server3.key -out server3.csr
+5. openssl x509 -req -sha256 -days 365 -in server3.csr -signkey server3.key -out server3.crt
+
