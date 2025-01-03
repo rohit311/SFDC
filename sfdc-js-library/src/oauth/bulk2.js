@@ -16,7 +16,7 @@ const createQueryJob = async (instanceUrl, query) => {
     const result = fetch(`${instanceUrl}/services/data/v62.0/jobs/query`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         "operation": "query",
