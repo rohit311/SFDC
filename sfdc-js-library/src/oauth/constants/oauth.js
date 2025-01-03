@@ -1,5 +1,5 @@
 const ACCESS_TOKEN_ENDPOINT = "https://login.salesforce.com/services/oauth2/token";
 
-export default {
+export {
   ACCESS_TOKEN_ENDPOINT
 }
