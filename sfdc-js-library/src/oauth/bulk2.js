@@ -24,7 +24,7 @@ const createQueryJob = async (instanceUrl, query) => {
       })
     });
 
-    const response = (await result).json();
+    const response = await result.json();
 
     return response;
 
