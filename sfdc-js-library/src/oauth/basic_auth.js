@@ -5,7 +5,7 @@
  * @module src/oauth
  */
 
-import ACCESS_TOKEN_ENDPOINT from './constants';
+import {ACCESS_TOKEN_ENDPOINT} from './constants/oauth.js';
 /**
    * API call for fetching access token
    * @param {requestMap.client_id} - Connected app consumer key
@@ -14,19 +14,18 @@ import ACCESS_TOKEN_ENDPOINT from './constants';
    * @param {requestMap.password} - Salesforce password
    * @returns - Access token
    */
-const fetchAccessToken = async (requestMap) => {
+const fetchAuthDetails = async (requestMap) => {
   if (!requestMap) {
-    throw Error("Empty request map !");
+    throw new Error("Empty request map !");
   }
 
   const {client_id: clientId, client_secret: clientSecret, username: userName, password} = requestMap;
-  let accessToken = "";
 
   try {
-    await fetch(ACCESS_TOKEN_ENDPOINT, {
+    const result = await fetch(ACCESS_TOKEN_ENDPOINT, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       body: new URLSearchParams({
         'grant_type': 'password',
@@ -36,12 +35,18 @@ const fetchAccessToken = async (requestMap) => {
         'password': password
       })
       .toString()
-    })
-    .then(res => {
-      console.log("result", res);
     });
+
+    const response = await result.json();
+
+    return response;
   } catch(error) {
     // handle error
+    console.log("error:", error);
   }
 
+  return {};
+
 };
+
+export {fetchAuthDetails};
