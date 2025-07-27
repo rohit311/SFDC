@@ -9,9 +9,9 @@ public class GoogleCalendarService {
         HttpResponse res = http.send(req);
 
         if (res.getStatusCode() == 200) {
-            System.debug('✅ Google Calendar Events: ' + res.getBody());
+            System.debug('Google Calendar Events: ' + res.getBody());
         } else {
-            System.debug('❌ Error: ' + res.getStatusCode() + ' - ' + res.getBody());
+            System.debug('Error: ' + res.getStatusCode() + ' - ' + res.getBody());
         }
     }
 }
